@@ -1,35 +1,18 @@
 from fastapi import FastAPI
 from datetime import datetime
+from Routes import route
 
 app = FastAPI()
 
-dataCards = [{
-    "id": 1,
-    "title": "Nulis Blog",
-    "description": "blog new journey with python (1)",
-    "is_deleted" : False,
-    "finished_at": "28-12-2022 18:34:59",
-    "created_at": "28-12-2022 18:34:59",
-    "updated_at": "28-12-2022 18:34:59",
-    "deleted_at": "28-12-2022 18:34:59"},
-    {
-    "id": 2,
-    "title": "Tugas kuliah KA1",
-    "description": "blog new journey with python",
-    "is_deleted" : False,
-    "finished_at": "28-12-2022 18:34:59",
-    "created_at": "28-12-2022 18:34:59",
-    "updated_at": "28-12-2022 18:34:59",
-    "deleted_at": "28-12-2022 18:34:59"
-}]
+app.include_router(route.router)
 
 @app.get("/")
 def root():
     return {"message": "Hi!"}
 
-@app.get("/cards")
-def get_cards():
-    return {"data": dataCards}
+# @app.get("/posts")
+# def get_posts():
+#     return {"data": dataCards}
 
 newDate = datetime.today().strftime('%d-%m-%Y %H:%I:%S')
 # test formating date
