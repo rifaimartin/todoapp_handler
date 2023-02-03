@@ -1,6 +1,15 @@
-- /todo (POST) create todo | DONE
-- /todo (GET) get All todo | DONE 
-- /todo/<id> (GET) get todo by ID | DONE
-- /todo/<id> (PUT/PATCH) update todo | DONE
-- /todo/<id>/finish finish todo | 
-- /todo/<id> (DELETE) soft delete todo | DONE
+## ⚒️ Use Library
+- FASTAPI
+- Basemodel 
+
+**Step run:**
+```sh
+# go to path directory project /app:
+uvicorn main:app    
+
+<hr>
+
+## Swagger
+- http://127.0.0.1:8000/docs
+
+code is fun!
