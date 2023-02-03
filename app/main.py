@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from datetime import datetime
 
 app = FastAPI()
 
@@ -29,3 +30,7 @@ def root():
 @app.get("/cards")
 def get_cards():
     return {"data": dataCards}
+
+newDate = datetime.today().strftime('%d-%m-%Y %H:%I:%S')
+# test formating date
+print("statringDate:" + " " + newDate)
