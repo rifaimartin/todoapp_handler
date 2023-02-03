@@ -101,7 +101,7 @@ def update_card(id: int):
                             detail=f"Card with the id: {id} was not found")
     card = cardService.find_by(id, dataCards)
     
-    cardUpdate = Card(id=card['id'],title=card['title'],description=card['description'],is_deleted=card['is_deleted'],status='DONE',created_at=card['created_at'],updated_at=card['updated_at'],deleted_at=newDate,finished_at=newDate)
+    cardUpdate = Card(id=card['id'],title=card['title'],description=card['description'],is_deleted=card['is_deleted'],status='DONE',created_at=card['created_at'],updated_at=card['updated_at'],finished_at=newDate)
     
     dataCards[index].update(cardUpdate.dict()) 
     return {"data": dataCards[index]}
