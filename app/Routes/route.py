@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Response, HTTPException
+from fastapi import APIRouter, Response, HTTPException, status
 from random import randrange
 from datetime import datetime
 
@@ -56,3 +56,19 @@ def get_card(id: int, response: Response):
                             detail=f"Card with the id: {id} was not found")
     return {"data": card}
 
+# Delete one Card by ID
+@router.delete("/cards/{id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_cardt(id: int):
+    index = cardService.find_index_cards(id, dataCards)
+    card = cardService.find_by(id, dataCards)
+    if index == None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"Card with the id: {id} was not found")
+
+    #how descruturing object with pyhton?
+    print("data card",card['title'])
+    print("index", index)
+    
+    cardUpdate = Card(id=card['id'],title=card['title'],description=card['description'],is_deleted=True,created_at=card['created_at'],updated_at=card['updated_at'],deleted_at=newDate,finished_at=card['finished_at'])
+    dataCards[index].update(cardUpdate.dict())
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
