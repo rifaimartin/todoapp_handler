@@ -7,6 +7,7 @@ class Card(BaseModel):
     title: str = None
     description: Optional[str] = None
     is_deleted: bool = False
+    status: str = 'TODO'
     created_at: str = None 
     updated_at: str = None
     deleted_at: str = None
