@@ -1,0 +1,6 @@
+- /todo (POST) create todo | DONE
+- /todo (GET) get All todo | DONE 
+- /todo/<id> (GET) get todo by ID | DONE
+- /todo/<id> (PUT/PATCH) update todo | DONE
+- /todo/<id>/finish finish todo | 
+- /todo/<id> (DELETE) soft delete todo | DONE
