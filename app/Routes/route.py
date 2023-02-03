@@ -1,8 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Response, HTTPException
 from random import randrange
 from datetime import datetime
 
 from Models.card import Card
+from Services import cardService
 
 router = APIRouter()
 
@@ -44,4 +45,14 @@ def create_card(card: Card):
     # print(card)
     dataCards.append(card_dict)
     return {"data": card_dict}
+
+# Get One Card by ID
+@router.get("/cards/{id}")
+def get_card(id: int, response: Response):
+    
+    card = cardService.find_by(id, dataCards)
+    if not card:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"Card with the id: {id} was not found")
+    return {"data": card}
 
